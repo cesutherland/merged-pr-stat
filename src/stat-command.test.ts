@@ -4,7 +4,7 @@ import path from "path";
 describe("createStat", () => {
   it("can make stat by simple-log", () => {
     const prs = createPullRequestsByLog(path.resolve(__dirname, "testdata/simple-log.json"));
-    const stat = createStat(prs);
+    const stat = createStat(prs, "", "");
     expect(stat).toMatchInlineSnapshot(`
       Object {
         "additions": 1040,
@@ -27,7 +27,7 @@ describe("createStat", () => {
 
   it("can make stat by repo-vscode", () => {
     const prs = createPullRequestsByLog(path.resolve(__dirname, "testdata/log-repo-vscode.json"));
-    const stat = createStat(prs);
+    const stat = createStat(prs, "2024-01-01", "2024-02-01");
     expect(stat).toMatchInlineSnapshot(`
       Object {
         "additions": 1514,
@@ -38,8 +38,10 @@ describe("createStat", () => {
         "deletions": 651,
         "deletionsAverage": 24.11111111111111,
         "deletionsMedian": 3,
+        "end": "2024-01-01",
         "leadTimeSecondsAverage": 633907,
         "leadTimeSecondsMedian": 164856,
+        "start": "2024-02-01",
         "timeToMergeFromFirstReviewSecondsAverage": 206823,
         "timeToMergeFromFirstReviewSecondsMedian": 17640,
         "timeToMergeSecondsAverage": 541799,

@@ -118,7 +118,7 @@ async function fetchAllPullRequestsByQuery(searchQuery: string): Promise<PullReq
             p.mergedAt,
             p.additions,
             p.deletions,
-            p.commits.nodes[0].commit.authoredDate,
+            p.commits.nodes[0] ? p.commits.nodes[0].commit.authoredDate : p.createdAt,
             p.reviews.nodes[0] ? p.reviews.nodes[0].createdAt : undefined
           )
       )
