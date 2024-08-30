@@ -45,7 +45,7 @@ export async function statCommand(options: StatCommandOptions): Promise<void> {
     start = end;
     end = addMonths(start, 1);
     first = false;
-    await sleep(2000);
+    await sleep(5000);
   };
 }
 

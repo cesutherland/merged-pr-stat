@@ -55,9 +55,10 @@ interface PullRequestNode {
 }
 
 async function fetchAllPullRequestsByQuery(searchQuery: string): Promise<PullRequest[]> {
+  // console.log(searchQuery);
   const query = gql`
     query($after: String) {
-      search(type: ISSUE, first: 100, query: "${searchQuery}", after: $after) {
+      search(type: ISSUE, first: 50, query: "${searchQuery}", after: $after) {
         issueCount
         nodes {
           ... on PullRequest {
@@ -106,7 +107,9 @@ async function fetchAllPullRequestsByQuery(searchQuery: string): Promise<PullReq
   let prs: PullRequest[] = [];
   // eslint-disable-next-line no-constant-condition
   while (true) {
+    // console.log(query);
     const data = await graphQLClient.request(query, { after });
+    // console.log(data);
     prs = prs.concat(
       data.search.nodes.map(
         (p: PullRequestNode) =>

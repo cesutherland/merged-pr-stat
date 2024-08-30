@@ -1,4 +1,7 @@
 # merged-pr-stat
+eg. $ GITHUB_TOKEN=... ./bin/merged-pr-stat.js stat --start=2024-03-01 --end=2024-08-
+01 --query="repo:sqsp/scheduling-acuity"
+
 This is a tool to creates merged PullRequest statistics.  It is useful to measure the productivity and health of your team.
 
 ## Installation
